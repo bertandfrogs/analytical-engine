@@ -17,15 +17,15 @@ S002`;
 	eng.runToCompletion();
 
 	// before state is cleared
-	t.is(eng.store.get(2).value, 3);
-	t.is(eng.mill.egress[0].value, 3);
+	t.is(eng.store.get(2).value, 3n);
+	t.is(eng.mill.egress[0].value, 3n);
 	t.not(eng.mill.operation, 0);
 
 	eng.clearState();
 
 	// after state is cleared
-	t.is(eng.store.get(2).value, 0);
-	t.is(eng.mill.egress[0].value, 0);
+	t.is(eng.store.get(2).value, 0n);
+	t.is(eng.mill.egress[0].value, 0n);
 	t.is(eng.mill.operation, 0);
 });
 
@@ -42,7 +42,7 @@ S002`;
 
 	eng.submitProgram(cards);
 	eng.runToCompletion();
-	t.is(eng.store.get(2).value, 3);
+	t.is(eng.store.get(2).value, 3n);
 });
 
 test('sqrt test', async t => {
@@ -56,7 +56,7 @@ A include from library cards for sqrt`;
 	eng.submitProgram(cards);
 	eng.runToCompletion();
 
-	t.is(eng.store.get(0).value, 200000);
+	t.is(eng.store.get(0).value, 200000n);
 });
 
 test('custom function test', async t => {
@@ -69,7 +69,7 @@ A include cards test/addtwo`;
 	eng.submitProgram(cards);
 	eng.runToCompletion();
 
-	t.is(eng.store.get(0).value, 6);
+	t.is(eng.store.get(0).value, 6n);
 });
 
 test('combinatorial cards test', async t => {
@@ -94,7 +94,7 @@ CB?11`;
 	eng.submitProgram(cards);
 	eng.runToCompletion();
 
-	t.is(eng.store.get(1).value, 720);
+	t.is(eng.store.get(1).value, 720n);
 });
 
 test('combinatorial cards shorthand test', async t => {
@@ -120,7 +120,7 @@ L0
 	eng.submitProgram(cards);
 	eng.runToCompletion();
 
-	t.is(eng.store.get(1).value, 5040);
+	t.is(eng.store.get(1).value, 5040n);
 });
 
 test('drawing test', async t => {
